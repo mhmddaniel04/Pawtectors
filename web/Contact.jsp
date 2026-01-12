@@ -23,47 +23,56 @@
             background-color: #ffffff;
         }
 
-        /* Navigation */
+        /* NAVBAR  */
         .navbar {
-            display: flex;
-            justify-content: space-between;
+            display: flex; 
+            justify-content: space-between; 
             align-items: center;
-            padding: 20px 50px;
+            padding: 20px 50px; 
             background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
             position: fixed;
-            width: 100%;
-            top: 0;
+            width: 100%; 
+            top: 0; 
             z-index: 999;
             box-sizing: border-box;
         }
-
         .nav-left {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                font-size: 22px;
-                font-weight: 800;
-                color: #1F4A66;
-            }
-
-            .nav-left img {
-                height: 45px;
-                width: auto;
-                border-radius: 8px;
-                object-fit: contain;
-            }
-
-        .nav-right a { 
-            position: relative; 
-            margin-left: 25px; 
-            text-decoration: none; 
-            color: var(--color-primary); 
-            font-size: 16px; 
-            font-weight: bold; 
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #1F4A66;
         }
 
+        .nav-left img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        .nav-right a {
+            position: relative;
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-size: 16px;
+            font-weight: bold;
+            padding-bottom: 3px;
+        }
+        .nav-right a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background-color: #288EB9;
+            transition: width 0.4s ease;
+        }
         .nav-right a:hover { color: var(--color-accent); }
+        .nav-right a:hover::after { width: 100%; }
 
         /* Header Section */
         .contact-header {
