@@ -28,24 +28,34 @@ public class AdminDAO {
         List<Event> list = new ArrayList<>();
         String sql = "SELECT * FROM EVENTS ORDER BY EVENT_DATE ASC";
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd");
-        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
                 Event e = new Event();
+
                 e.setId(rs.getInt("ID"));
                 e.setTitle(rs.getString("TITLE"));
+
                 Date dbDate = rs.getDate("EVENT_DATE");
                 if (dbDate != null) {
                     e.setEventDate(dbDate);
                     e.setDate(sdf.format(dbDate));
                 }
+
                 e.setLocation(rs.getString("LOCATION"));
                 e.setDescription(rs.getString("DESCRIPTION"));
-                e.setTime("10:00 AM - 4:00 PM");
+
+                e.setStartTime(rs.getString("START_TIME"));
+                e.setEndTime(rs.getString("END_TIME"));
+
                 list.add(e);
             }
         }
         return list;
     }
+
 
     // --- UTILITIES ---
     public static byte[] toByteArray(InputStream is) throws Exception {

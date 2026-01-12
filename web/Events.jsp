@@ -175,7 +175,10 @@
                         <div class="event-details">
                             <h3>${event.title}</h3>
                             <div class="event-meta">
-                                <span><i class="fas fa-clock"></i> ${event.time}</span>
+                                <span>
+                                    <i class="fas fa-clock"></i>
+                                    ${event.startTime} - ${event.endTime}
+                                </span>
                                 <span><i class="fas fa-map-marker-alt"></i> ${event.location}</span>
                             </div>
                             <p>${event.description}</p>

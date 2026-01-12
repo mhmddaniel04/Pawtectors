@@ -2,6 +2,8 @@ package com.pawtectors.model;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
 
 public class Event {
     private int id;
@@ -45,4 +47,6 @@ public class Event {
     public void setStartTime(String startTime) { this.startTime = startTime; }
     public String getEndTime() { return endTime; }
     public void setEndTime(String endTime) { this.endTime = endTime; }
+    
+    
 }
