@@ -319,7 +319,6 @@
                         <option value="All">All Status</option>
                         <option value="Available">Available</option>
                         <option value="Adopted">Adopted</option>
-                        <option value="Pending">Pending</option>
                     </select>
                 </div>
             </div>
@@ -382,7 +381,7 @@
                             <tr>
                                 <th>Pet</th>
                                 <th>Applicant Info</th>
-                                <th>Location & Age</th>
+                                <th>Applicant Age</th>
                                 <th>Pickup Date</th>
                                 <th>Request Date</th> 
                                 <th>Actions</th>
@@ -401,7 +400,7 @@
                                     </td>
                                     <td>
                                         ${ar.origin}<br>
-                                        <small>Applicant Age: ${ar.age}</small>
+                                        <small>${ar.age} Years Old</small>
                                     </td>
                                     <td>
                                         <div style="font-weight: 600;">${ar.pickupDate}</div>
@@ -582,7 +581,6 @@
             
             <select name="status" id="c_status">
                 <option>Available</option>
-                <option>Pending</option>
                 <option>Adopted</option>
             </select>
             
