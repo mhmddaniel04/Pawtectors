@@ -1,11 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.Calendar" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Paws & Care | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="image/jpeg" href="Images/logo.jpeg">
+    
     <style>
         :root {
             --color-primary: #1F4A66;
@@ -29,21 +34,20 @@
             align-items: center; 
             padding: 20px 50px; 
             background-color: #ffffff; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
             position: fixed; 
             width: 100%; 
             top: 0; 
-            z-index: 1000; 
+            z-index: 999; 
             box-sizing: border-box;
         }
-
         .nav-left {
             display: flex;
             align-items: center;
             gap: 12px;
             font-size: 22px;
             font-weight: 800;
-            color: var(--color-primary);
+            color: #1F4A66;
         }
 
         .nav-left img {
@@ -52,33 +56,28 @@
             border-radius: 8px;
             object-fit: contain;
         }
-
         .nav-right a {
             position: relative;
-            margin-left: 25px;
+            margin-left: 20px;
             text-decoration: none;
             color: var(--color-primary);
-            font-size: 15px;
-            font-weight: 700;
-            padding-bottom: 5px;
-            transition: 0.3s;
+            font-size: 16px;
+            font-weight: bold;
+            padding-bottom: 3px;
         }
-
         .nav-right a::after {
             content: "";
             position: absolute;
             left: 0;
-            bottom: 0;
+            bottom: -3px;
             width: 0%;
             height: 2px;
-            background-color: var(--color-accent);
+            background-color: #288EB9;
             transition: width 0.4s ease;
         }
-
         .nav-right a:hover { color: var(--color-accent); }
         .nav-right a:hover::after { width: 100%; }
         .nav-active { color: var(--color-accent) !important; }
-        .nav-active::after { width: 100% !important; }
 
         /* HERO SECTION */
         .hero {
@@ -162,21 +161,6 @@
         .btn-event:hover {
             background-color: #274F63;
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .announcement-section {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 30px;
-                width: 90%;
-            }
-
-            .announce-left img {
-                width: 200px;
-                margin-bottom: 10px;
-            }
-        }
         
         /* CONTACT SECTION  */
         .contact-section {
@@ -217,14 +201,13 @@
         }
 
         .contact-right img {
-        width: 100%;
-        max-width: 450px;
-        border-radius: 20px; 
-        object-fit: cover;
-        display: block;
-        margin: 0 auto; 
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px; 
+            object-fit: cover;
+            display: block;
+            margin: 0 auto; 
         }
-
 
         /* FOOTER */
         .footer-tiny {
@@ -244,31 +227,31 @@
             .contact-section { flex-direction: column; text-align: center; padding-bottom: 200px; }
             .contact-left { max-width: 100%; }
             .contact-right img { width: 300px; margin-bottom: -120px; margin-top: 40px;}
+            .announcement-section { flex-direction: column; text-align: center; padding: 40px 30px; width: 90%; }
+            .announce-left img { width: 200px; margin-bottom: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
+    <nav class="navbar">
         <div class="nav-left">
-            <a href="Home.html" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
+            <a href="Home.jsp" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
                 <img src="Images/logo.jpeg" alt="Pawtectors Logo">
                 <span>Pawtectors</span>
             </a>
         </div>
         <div class="nav-right">
-            <a href="Home.html" class="nav-active">Home</a>
-            <a href="AboutUs.html">About Us</a>
+            <a href="Home" class="nav-active">Home</a>
+            <a href="AboutUs.jsp">About Us</a>
             <a href="Adoption">Adoption</a>
             <a href="Events">Events</a>
-            <a href="Guides.html">Pet Guides</a>
-            <a href="Contact">Contact</a>
+            <a href="Guides.jsp">Pet Guides</a>
+            <a href="Contact.jsp">Contact</a>
         </div>
-    </div>
+    </nav>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
+    <header class="hero">
         <div class="hero-text">
             <h5>LOVE WAITS HERE</h5>
             <h1>Every Pet Deserves<br>A Loving Home</h1>
@@ -278,15 +261,14 @@
         <div class="hero-img">
             <img src="Images/cat.png" alt="Pet" onerror="this.src='https://placehold.co/450x450?text=Pet';">
         </div>
-    </div>
+    </header>
 
-    <!-- FEATURE CARDS -->
-    <div class="features-section">
+    <main class="features-section">
         <div class="feature-card">
             <div class="card-img"><img src="Images/logo.jpeg" alt="About" onerror="this.src='https://placehold.co/320x200?text=About';"></div>
             <h2>About Us</h2>
             <p style="padding: 0 20px; color: var(--color-primary); font-size: 14px;">Dedicated to rescuing and rehoming animals in need.</p>
-            <a href="AboutUs.html" class="btn-card">Learn More</a>
+            <a href="AboutUs.jsp" class="btn-card">Learn More</a>
         </div>
         <div class="feature-card">
             <div class="card-img"><img src="Images/adoption.jpeg" alt="Adoption" onerror="this.src='https://placehold.co/320x200?text=Adoption';"></div>
@@ -298,19 +280,15 @@
             <div class="card-img"><img src="Images/guides.webp" alt="Guide" onerror="this.src='https://placehold.co/320x200?text=Guide';"></div>
             <h2>Pet Guide</h2>
             <p style="padding: 0 20px; color: var(--color-primary); font-size: 14px;">Expert advice on keeping your pets healthy and happy.</p>
-            <a href="Guides.html" class="btn-card">Read Guides</a>
+            <a href="Guides.jsp" class="btn-card">Read Guides</a>
         </div>
-    </div>
+    </main>
     
-    <!-- ANNOUNCEMENT SECTION -->
     <div class="announcement-wrapper">
-
-        <div class="announcement-section">
-
+        <section class="announcement-section">
             <div class="announce-left">
                 <img src="Images/announcement.png" alt="Cat Announcement">
             </div>
-
             <div class="announce-right">
                 <h2>ANNOUNCEMENT !</h2>
                 <p>Hey there!</p>
@@ -318,15 +296,11 @@
                     Our Adoption Drive is happening this Saturday!  
                     Come visit us and meet your future furry best friend.
                 </p>
-
                 <a href="Events" class="btn-event">View Event</a>
             </div>
-
-        </div>
-
+        </section>
     </div>
 
-    <!-- CONTACT SECTION -->
     <section class="contact-section">
         <div class="contact-left">
             <h2>Contact Us</h2>
@@ -336,16 +310,15 @@
                 <li><i class="fa-solid fa-phone"></i> +60 12-345 6789</li>
                 <li><i class="fa-solid fa-location-dot"></i> 22, Jalan Harmoni, 40000 Shah Alam, Selangor</li>
             </ul>
-            <a href="Contact" class="contact-btn">Get in Touch</a>
+            <a href="Contact.jsp" class="contact-btn">Get in Touch</a>
         </div>
         <div class="contact-right">
             <img src="Images/contact.webp" alt="Contact Illustration" onerror="this.src='https://placehold.co/300x200?text=Contact';">
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <div class="footer-tiny">
-        <p>&copy; 2026 Pawtectors Rescue Shelter. All rights reserved.</p>
-    </div>
+    <footer class="footer-tiny">
+        <p>&copy; <%= Calendar.getInstance().get(Calendar.YEAR) %> Pawtectors Rescue Shelter. All rights reserved.</p>
+    </footer>
 </body>
 </html>

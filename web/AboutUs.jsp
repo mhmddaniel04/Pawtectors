@@ -1,0 +1,348 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Pawtectors | About Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/jpeg" href="Images/logo.jpeg">
+<style>
+:root {
+--color-primary: #1F4A66;
+--color-accent: #4A89B0;
+--color-text: #334155;
+--color-bg: #ffffff;
+}
+
+    body {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        margin: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background-color: #ffffff; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 999; 
+            box-sizing: border-box;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #1F4A66;
+        }
+
+        .nav-left img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        .nav-right a {
+            position: relative;
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-size: 16px;
+            font-weight: bold;
+            padding-bottom: 3px;
+        }
+        .nav-right a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background-color: #288EB9;
+            transition: width 0.4s ease;
+        }
+        .nav-right a:hover { color: var(--color-accent); }
+        .nav-right a:hover::after { width: 100%; }
+        .nav-active { color: var(--color-accent) !important; }
+
+    /* HERO SECTION */
+    .about-hero {
+        background-color: var(--color-primary);
+        color: white;
+        padding: 140px 50px 100px;
+        text-align: center;
+        border-radius: 0 0 50px 50px;
+        margin-top: -20px;
+    }
+
+    .about-hero h1 {
+        font-size: 56px;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: -2px;
+    }
+
+    .about-hero p {
+        font-size: 20px;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
+
+    /* CONTENT ROWS */
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 10%;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .info-row img {
+        width: 50%;
+        max-width: 500px;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(31, 74, 102, 0.15);
+        transition: transform 0.4s ease;
+    }
+    
+    .info-row:hover img {
+        transform: scale(1.02);
+    }
+
+    .info-text {
+        width: 50%;
+    }
+
+    .info-text h2 {
+        font-size: 36px;
+        color: var(--color-primary);
+        margin-bottom: 20px;
+        font-weight: 800;
+    }
+
+    .info-text p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #475569;
+    }
+
+    .reverse {
+        flex-direction: row-reverse;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 80px 10%;
+        background: var(--color-primary);
+        color: white;
+        border-radius: 50px 50px 0 0;
+        margin-top: 50px;
+        position: relative;
+    }
+
+    .contact-left {
+        max-width: 50%;
+        z-index: 2;
+    }
+
+    .contact-left h2 {
+        font-size: 42px;
+        margin-bottom: 20px;
+        font-weight: 800;
+    }
+
+    .contact-left p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
+
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 40px;
+    }
+
+    .contact-list li {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .contact-list i {
+        color: var(--color-accent);
+        width: 25px;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 16px 35px;
+        background-color: white;
+        color: var(--color-primary);
+        font-weight: 800;
+        text-decoration: none;
+        border-radius: 15px;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-3px);
+        background-color: var(--color-accent);
+        color: white;
+    }
+
+    .contact-right img {
+    width: 100%;
+    max-width: 450px; 
+    border-radius: 20px; 
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    }
+
+    /* FOOTER / HIDDEN ACCESS */
+    .footer-tiny {
+        background: #16354a;
+        color: #94a3b8;
+        text-align: center;
+        padding: 30px 10%;
+        font-size: 14px;
+    }
+
+    /* Secret target element */
+    #admin-trigger {
+        cursor: default;
+        user-select: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+        .info-row { flex-direction: column; text-align: center; gap: 40px; }
+        .info-row img, .info-text { width: 100%; }
+        .contact-section { flex-direction: column; text-align: center; padding-bottom: 200px; }
+        .contact-left { max-width: 100%; }
+        .contact-right img { width: 300px; margin-bottom: -120px; margin-top: 40px;}
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-left">
+        <a href="Home.jsp" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
+            <img src="Images/logo.jpeg" alt="Pawtectors Logo">
+            <span>Pawtectors</span>
+        </a>
+    </div>
+    <div class="nav-right">
+        <a href="Home.jsp">Home</a>
+        <a href="AboutUs.jsp" class="nav-active">About Us</a>
+        <a href="Adoption">Adoption</a>
+        <a href="Events">Events</a>
+        <a href="Guides.jsp">Pet Guides</a>
+        <a href="Contact.jsp">Contact</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="about-hero">
+    <h1>About Pawtectors</h1>
+    <p>We are a dedicated collective of animal lovers, rescuers, and advocates working to give every abandoned pet a second chance at happiness.</p>
+</section>
+
+<!-- WHO WE ARE -->
+<div class="info-row">
+    <img src="Images/logo.jpeg" alt="Who We Are">
+    <div class="info-text">
+        <h2>Who We Are</h2>
+        <p>Pawtectors is a compassionate animal rescue organization dedicated to saving stray, neglected, and injured animals. Our team of caring volunteers work tirelessly to ensure every pet receives medical treatment, safety, and love until they find their forever homes.</p>
+    </div>
+</div>
+
+<!-- OUR MISSION -->
+<div class="info-row reverse">
+    <img src="Images/mission.avif" alt="Our Mission">
+    <div class="info-text">
+        <h2>Our Mission</h2>
+        <p>Our mission is to rescue, rehabilitate, and rehome animals in need while promoting responsible pet care. Through educational programs and community outreach, we aim to reduce the number of homeless animals and inspire compassion for all lives.</p>
+    </div>
+</div>
+
+<!-- OUR VISION -->
+<div class="info-row">
+    <img src="Images/vission.png" alt="Our Vision">
+    <div class="info-text">
+        <h2>Our Vision</h2>
+        <p>We envision a future where every animal is treated with dignity, respect, and kindness. A world where no pet suffers and every rescued animal finds a loving home. With strong community support, we strive to create a safe environment for all animals.</p>
+    </div>
+</div>
+
+<!-- CONTACT US SECTION -->
+<section class="contact-section">
+    <div class="contact-left">
+        <h2>Contact Us</h2>
+        <p>Need assistance or have a question about adoption? We are just a message away. Reach out to us through any of the platforms listed below.</p>
+        
+        <ul class="contact-list">
+            <li><i class="fa-solid fa-envelope"></i> pawtectors@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> +60 12-345 6789</li>
+            <li><i class="fa-solid fa-location-dot"></i> 22, Jalan Harmoni, 40000, Shah Alam, Selangor</li>
+        </ul>
+        <a href="Contact.jsp" class="contact-btn">Get in Touch</a>
+    </div>
+
+    <div class="contact-right">
+        <img src="Images/contact.webp" alt="Contact Illustration" onerror="this.style.display='none'">
+    </div>
+</section>
+
+<!-- FOOTER / SECRET TRIGGER -->
+<div class="footer-tiny">
+    <p>&copy; 2026 <span id="admin-trigger">Pawtectors Rescue Shelter</span>. All rights reserved.</p>
+</div>
+
+<script>
+    // 1. Keyboard Shortcut (Ctrl + Shift + A)
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+            window.location.href = 'Login.jsp';
+        }
+    });
+
+    // 2. Secret Double Click in Footer
+    const adminTrigger = document.getElementById('admin-trigger');
+    adminTrigger.addEventListener('dblclick', function() {
+        window.location.href = 'Login.jsp';
+    });
+</script>
+
+
+</body>
+</html>

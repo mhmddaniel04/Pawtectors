@@ -67,6 +67,7 @@
         }
         .nav-right a:hover { color: var(--color-accent); }
         .nav-right a:hover::after { width: 100%; }
+        .nav-active { color: var(--color-accent) !important; }
 
         /* HEADER */
         .adopt-header { 
@@ -211,21 +212,21 @@
 
     <!-- NAVBAR -->
     <div class="navbar">
-        <div class="nav-left">
-            <a href="Home.html" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
-                <img src="Images/logo.jpeg" alt="Pawtectors Logo">
-                <span>Pawtectors</span>
-            </a>
-        </div>
-        <div class="nav-right">
-            <a href="Home.html">Home</a>
-            <a href="AboutUs.html">About Us</a>
-            <a href="Adoption" style="color: var(--color-accent);">Adoption</a>
-            <a href="Events">Events</a>
-            <a href="Guides.html">Pet Guides</a>
-            <a href="Contact">Contact</a>
-        </div>
+    <div class="nav-left">
+        <a href="Home.jsp" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
+            <img src="Images/logo.jpeg" alt="Pawtectors Logo">
+            <span>Pawtectors</span>
+        </a>
     </div>
+    <div class="nav-right">
+        <a href="Home.jsp">Home</a>
+        <a href="AboutUs.jsp">About Us</a>
+        <a href="Adoption" class="nav-active">Adoption</a>
+        <a href="Events">Events</a>
+        <a href="Guides.jsp">Pet Guides</a>
+        <a href="Contact.jsp">Contact</a>
+    </div>
+</div>
 
     <div class="adopt-header">
         <h1>Meet Our Lovely Pets</h1>

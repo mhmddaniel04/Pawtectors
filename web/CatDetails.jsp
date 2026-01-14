@@ -67,6 +67,7 @@
         }
         .nav-right a:hover { color: var(--color-accent); }
         .nav-right a:hover::after { width: 100%; }
+        .nav-active { color: var(--color-accent) !important; }
 
         /* HERO HEADER */
         .details-header { 
@@ -201,9 +202,9 @@
                     </a>
                 </div>
         <div class="nav-right">
-            <a href="Home.html">Home</a>
-            <a href="AboutUs.html">About Us</a>
-            <a href="Adoption" style="color: var(--color-accent);">Adoption</a>
+            <a href="Home.jsp">Home</a>
+            <a href="AboutUs.jsp">About Us</a>
+            <a href="Adoption" class="nav-active">Adoption</a>
             <a href="Events">Events</a>
             <a href="Guides.html">Pet Guides</a>
             <a href="Contact">Contact</a>

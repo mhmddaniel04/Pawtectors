@@ -73,6 +73,7 @@
         }
         .nav-right a:hover { color: var(--color-accent); }
         .nav-right a:hover::after { width: 100%; }
+        .nav-active { color: var(--color-accent) !important; }
 
         /* Header Section */
         .contact-header {
@@ -226,12 +227,12 @@
                     </a>
             </div>
             <div class="nav-right">
-                <a href="Home.html">Home</a>
-                <a href="AboutUs.html">About Us</a>
+                <a href="Home.jsp">Home</a>
+                <a href="AboutUs.jsp">About Us</a>
                 <a href="Adoption">Adoption</a>
                 <a href="Events">Events</a>
-                <a href="Guides.html">Pet Guides</a>
-                <a href="Contact" style="color: var(--color-accent);">Contact</a>
+                <a href="Guides.jsp">Pet Guides</a>
+                <a href="Contact.jsp"class="nav-active">Contact</a>
             </div>
         </div>
 
