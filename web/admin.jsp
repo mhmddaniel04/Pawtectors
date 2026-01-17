@@ -280,7 +280,7 @@
         <i class="fa-solid fa-envelope"></i> User Inquiries
     </div>
 
-    <a href="Home.html" class="exit-btn">
+    <a href="Home.jsp" class="exit-btn">
         <i class="fa-solid fa-right-from-bracket"></i> Exit to Site
     </a>
 </div>
@@ -636,174 +636,174 @@
     </div>
 </div>
 
-<script>
-    window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tab = urlParams.get('tab');
-        if (tab === 'adoptions') {
-            showTab('adoptions', document.getElementById('nav-adoptions'));
-        } else if (tab === 'events') {
-            showTab('events', document.getElementById('nav-events'));
-        } else if (tab === 'inquiries') {
-            showTab('inquiries', document.getElementById('nav-inquiries'));
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            if (tab === 'adoptions') {
+                showTab('adoptions', document.getElementById('nav-adoptions'));
+            } else if (tab === 'events') {
+                showTab('events', document.getElementById('nav-events'));
+            } else if (tab === 'inquiries') {
+                showTab('inquiries', document.getElementById('nav-inquiries'));
+            }
+        };
+
+        function showTab(t, el){
+            document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
+            document.getElementById(t + '-tab').classList.add('active');
+            el.classList.add('active');
         }
-    };
 
-    function showTab(t, el){
-        document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
-        document.getElementById(t + '-tab').classList.add('active');
-        el.classList.add('active');
-    }
+        function closeModal(id){ 
+            document.getElementById(id).style.display = 'none'; 
+        }
 
-    function closeModal(id){ 
-        document.getElementById(id).style.display = 'none'; 
-    }
+        function openAddCatModal(){
+            document.getElementById('catMTitle').innerText = "Add New Cat";
+            document.getElementById('catAction').value = "addCat";
+            document.getElementById('catId').value = '';
+            document.getElementById('catModal').style.display = 'flex';
+        }
 
-    function openAddCatModal(){
-        document.getElementById('catMTitle').innerText = "Add New Cat";
-        document.getElementById('catAction').value = "addCat";
-        document.getElementById('catId').value = '';
-        document.getElementById('catModal').style.display = 'flex';
-    }
+        function openEditCatModal(id,n,b,a,g,l,d,s,dt){
+            document.getElementById('catMTitle').innerText = "Edit Cat Record";
+            document.getElementById('catAction').value = "updateCat";
+            document.getElementById('catId').value = id;
+            document.getElementById('c_name').value = n;
+            document.getElementById('c_breed').value = b;
+            document.getElementById('c_age').value = a;
+            document.getElementById('c_gender').value = g;
+            document.getElementById('c_loc').value = l;
+            document.getElementById('c_date').value = d;
+            document.getElementById('c_status').value = s;
+            document.getElementById('c_details').value = dt;
+            document.getElementById('catModal').style.display = 'flex';
+        }
 
-    function openEditCatModal(id,n,b,a,g,l,d,s,dt){
-        document.getElementById('catMTitle').innerText = "Edit Cat Record";
-        document.getElementById('catAction').value = "updateCat";
-        document.getElementById('catId').value = id;
-        document.getElementById('c_name').value = n;
-        document.getElementById('c_breed').value = b;
-        document.getElementById('c_age').value = a;
-        document.getElementById('c_gender').value = g;
-        document.getElementById('c_loc').value = l;
-        document.getElementById('c_date').value = d;
-        document.getElementById('c_status').value = s;
-        document.getElementById('c_details').value = dt;
-        document.getElementById('catModal').style.display = 'flex';
-    }
+        function openAddEventModal(){
+            document.getElementById('eventMTitle').innerText = "Create New Event";
+            document.getElementById('eventAction').value = "addEvent";
+            document.getElementById('eventModal').style.display = 'flex';
+        }
 
-    function openAddEventModal(){
-        document.getElementById('eventMTitle').innerText = "Create New Event";
-        document.getElementById('eventAction').value = "addEvent";
+        function openEditEventModal(id, t, d, l, ds, st, et) {
+        document.getElementById('eventMTitle').innerText = "Edit Event Details";
+        document.getElementById('eventAction').value = "updateEvent";
+        document.getElementById('eventId').value = id;
+        document.getElementById('e_title').value = t;
+        document.getElementById('e_date').value = d;
+        document.getElementById('e_loc').value = l;
+        document.getElementById('e_desc').value = ds;
+        document.getElementById('e_start').value = st;
+        document.getElementById('e_end').value = et;
+
         document.getElementById('eventModal').style.display = 'flex';
-    }
-
-    function openEditEventModal(id, t, d, l, ds, st, et) {
-    document.getElementById('eventMTitle').innerText = "Edit Event Details";
-    document.getElementById('eventAction').value = "updateEvent";
-    document.getElementById('eventId').value = id;
-    document.getElementById('e_title').value = t;
-    document.getElementById('e_date').value = d;
-    document.getElementById('e_loc').value = l;
-    document.getElementById('e_desc').value = ds;
-    document.getElementById('e_start').value = st;
-    document.getElementById('e_end').value = et;
-    
-    document.getElementById('eventModal').style.display = 'flex';
-    }
-    
-    if (window.location.search.includes("success=")) {
-    setTimeout(() => {
-        const url = new URL(window.location);
-        url.searchParams.delete("success");
-        window.history.replaceState({}, document.title, url);
-    }, 100);
-}
-
-const tab = new URLSearchParams(window.location.search).get("tab");
-if (tab) {
-    document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
-    document.getElementById(tab + "-tab")?.classList.add("active");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const msg = document.getElementById("successMsg");
-    if (msg) {
-        setTimeout(() => {
-            msg.style.opacity = "0";
-            msg.style.transform = "translateY(-10px)";
-        }, 3000);
-
-        setTimeout(() => {
-            msg.remove();
-        }, 3600);
-    }
-});
-
-// Cat Table Filtering
-const breedInput = document.getElementById('searchBreed');
-const statusSelect = document.getElementById('statusFilter');
-const catTable = document.querySelector('#cats-tab table tbody');
-
-function filterCats() {
-    const breedValue = breedInput.value.toLowerCase();
-    const statusValue = statusSelect.value;
-
-    const rows = catTable.querySelectorAll('tr');
-    rows.forEach(row => {
-        const breed = row.cells[2].innerText.toLowerCase();
-        const status = row.cells[3].innerText.trim();
-
-        const breedMatch = breed.includes(breedValue);
-        const statusMatch = (statusValue === "All") || (status === statusValue);
-
-        if (breedMatch && statusMatch) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
         }
-    });
-}
 
-// Event listeners
-breedInput.addEventListener('input', filterCats);
-statusSelect.addEventListener('change', filterCats);
+        if (window.location.search.includes("success=")) {
+        setTimeout(() => {
+            const url = new URL(window.location);
+            url.searchParams.delete("success");
+            window.history.replaceState({}, document.title, url);
+        }, 100);
+    }
 
-// --- Adoption Sorting (Newest / Oldest Request Date) ---
-document.getElementById('adoptionSort')?.addEventListener('change', function() {
-    const sortType = this.value;
-    const tableBody = document.getElementById('adoptionTableBody');
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
+        const tab = new URLSearchParams(window.location.search).get("tab");
+        if (tab) {
+            document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+            document.getElementById(tab + "-tab")?.classList.add("active");
+        }
 
-    rows.sort((a, b) => {
-        const dateA = new Date(a.cells[4].getAttribute('data-date')); 
-        const dateB = new Date(b.cells[4].getAttribute('data-date'));
-        return sortType === 'newest' ? dateB - dateA : dateA - dateB;
-    });
+        document.addEventListener("DOMContentLoaded", function () {
+            const msg = document.getElementById("successMsg");
+            if (msg) {
+                setTimeout(() => {
+                    msg.style.opacity = "0";
+                    msg.style.transform = "translateY(-10px)";
+                }, 3000);
 
-    rows.forEach(r => tableBody.appendChild(r));
-});
+                setTimeout(() => {
+                    msg.remove();
+                }, 3600);
+            }
+        });
 
-// --- Event Sorting  ---
-document.getElementById('eventSort')?.addEventListener('change', function() {
-    const sortType = this.value;
-    const tableBody = document.getElementById('eventTableBody');
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
+        // Cat Table Filtering
+        const breedInput = document.getElementById('searchBreed');
+        const statusSelect = document.getElementById('statusFilter');
+        const catTable = document.querySelector('#cats-tab table tbody');
 
-    rows.sort((a, b) => {
-        const dateA = new Date(a.cells[1].getAttribute('data-date')); 
-        const dateB = new Date(b.cells[1].getAttribute('data-date'));
-        return sortType === 'sooner' ? dateA - dateB : dateB - dateA;
-    });
+        function filterCats() {
+            const breedValue = breedInput.value.toLowerCase();
+            const statusValue = statusSelect.value;
 
-    rows.forEach(r => tableBody.appendChild(r));
-});
+            const rows = catTable.querySelectorAll('tr');
+            rows.forEach(row => {
+                const breed = row.cells[2].innerText.toLowerCase();
+                const status = row.cells[3].innerText.trim();
 
-// --- User Inquries Sorting  ---
-document.getElementById('inquirySort')?.addEventListener('change', function() {
-    const sortType = this.value;
-    const tableBody = document.getElementById('inquiryTableBody');
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
+                const breedMatch = breed.includes(breedValue);
+                const statusMatch = (statusValue === "All") || (status === statusValue);
 
-    rows.sort((a, b) => {
-        const dateA = new Date(a.cells[2].getAttribute('data-date'));
-        const dateB = new Date(b.cells[2].getAttribute('data-date'));
-        return sortType === 'newest' ? dateB - dateA : dateA - dateB;
-    });
+                if (breedMatch && statusMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
 
-    rows.forEach(r => tableBody.appendChild(r));
-});
-</script>
+        // Event listeners
+        breedInput.addEventListener('input', filterCats);
+        statusSelect.addEventListener('change', filterCats);
+
+        // --- Adoption Sorting (Newest / Oldest Request Date) ---
+        document.getElementById('adoptionSort')?.addEventListener('change', function() {
+            const sortType = this.value;
+            const tableBody = document.getElementById('adoptionTableBody');
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                const dateA = new Date(a.cells[4].getAttribute('data-date')); 
+                const dateB = new Date(b.cells[4].getAttribute('data-date'));
+                return sortType === 'newest' ? dateB - dateA : dateA - dateB;
+            });
+
+            rows.forEach(r => tableBody.appendChild(r));
+        });
+
+        // --- Event Sorting  ---
+        document.getElementById('eventSort')?.addEventListener('change', function() {
+            const sortType = this.value;
+            const tableBody = document.getElementById('eventTableBody');
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                const dateA = new Date(a.cells[1].getAttribute('data-date')); 
+                const dateB = new Date(b.cells[1].getAttribute('data-date'));
+                return sortType === 'sooner' ? dateA - dateB : dateB - dateA;
+            });
+
+            rows.forEach(r => tableBody.appendChild(r));
+        });
+
+        // --- User Inquries Sorting  ---
+        document.getElementById('inquirySort')?.addEventListener('change', function() {
+            const sortType = this.value;
+            const tableBody = document.getElementById('inquiryTableBody');
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                const dateA = new Date(a.cells[2].getAttribute('data-date'));
+                const dateB = new Date(b.cells[2].getAttribute('data-date'));
+                return sortType === 'newest' ? dateB - dateA : dateA - dateB;
+            });
+
+            rows.forEach(r => tableBody.appendChild(r));
+        });
+    </script>
 
 
 </body>
