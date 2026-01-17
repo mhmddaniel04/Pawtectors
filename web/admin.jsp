@@ -13,14 +13,14 @@
 <link rel="icon" type="image/jpeg" href="Images/logo.jpeg">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root {
---nav-blue: #1F4A66;
---accent-blue: #288EB9;
---light-blue: #A8C8DB;
---bg: #f4f7f9;
---success: #22c55e;
---danger: #ef4444;
-}
+    :root {
+    --nav-blue: #1F4A66;
+    --accent-blue: #288EB9;
+    --light-blue: #A8C8DB;
+    --bg: #f4f7f9;
+    --success: #22c55e;
+    --danger: #ef4444;
+    }
 
     body { 
         font-family: 'Inter', sans-serif; 

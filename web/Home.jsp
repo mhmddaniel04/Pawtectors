@@ -256,7 +256,7 @@
             <h5>LOVE WAITS HERE</h5>
             <h1>Every Pet Deserves<br>A Loving Home</h1>
             <p>Open your heart and give rescued pets a second chance. Adopt today and change a life forever.</p>
-            <a class="btn-adopt" href="Adoption">Adopt Now</a>
+            <a class="btn-adopt" href="Adoption" onclick="return playSoundAndGo(event, this.href);">Adopt Now</a>
         </div>
         <div class="hero-img">
             <img src="Images/cat.png" alt="Pet" onerror="this.src='https://placehold.co/450x450?text=Pet';">
@@ -320,5 +320,34 @@
     <footer class="footer-tiny">
         <p>&copy; <%= Calendar.getInstance().get(Calendar.YEAR) %> Pawtectors Rescue Shelter. All rights reserved.</p>
     </footer>
+    
+    <audio id="adoptClickSound" src="Images/submitAdopt.mp3" preload="auto"></audio>
+    
+    <script>
+        function playSoundAndGo(event, url) {
+            // Prevent immediate navigation
+            event.preventDefault();
+
+            const audio = document.getElementById('adoptClickSound');
+
+            if (audio) {
+                audio.play().catch(function(error) {
+                    // If autoplay/play is blocked, just go to the URL
+                    window.location.href = url;
+                });
+
+                // Wait for the sound to play for a short duration (e.g., 400ms) 
+                // before changing the page so the user hears the "click"
+                setTimeout(function() {
+                    window.location.href = url;
+                }, 400); 
+            } else {
+                // Fallback if audio element is missing
+                window.location.href = url;
+            }
+
+            return false;
+        }
+    </script>
 </body>
 </html>
