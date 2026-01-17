@@ -332,27 +332,67 @@
 
     <!-- SUCCESS MODAL -->
     <div id="successModal" class="modal">
-        <div class="modal-content" style="text-align: center;">
-            <div style="width: 70px; height: 70px; background: #dcfce7; color: #166534; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px;"><i class="fa-solid fa-check"></i></div>
-            <h2 style="margin-bottom: 10px;">Application Sent!</h2>
-            <p style="color: #64748b; margin-bottom: 25px;">We have received your request for ${cat.name}.</p>
-            <button class="btn-adopt" onclick="closeSuccessModal()">Great!</button>
+    <div class="modal-content" style="text-align: center; max-width: 550px;">
+        <div style="width: 60px; height: 60px; background: #dcfce7; color: #166534; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 28px;">
+            <i class="fa-solid fa-check"></i>
         </div>
+
+        <h2 style="margin-bottom: 10px; font-weight: 800;">Application Sent!</h2>
+        <p style="color: #64748b; margin-bottom: 20px;">We have received your request for ${cat.name}.</p>
+
+        <div style="width: 100%; border-radius: 20px; overflow: hidden; background: #f1f5f9; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 25px;">
+            <video id="successVideo" width="100%" style="display: block;">
+                <source src="Images/successAdopt1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <button class="btn-adopt" onclick="closeSuccessModal()">Great!</button>
     </div>
+</div>
+
+    
 
     <script>
-        function openModal() { document.getElementById('adoptModal').style.display = 'block'; }
-        function closeModal() { document.getElementById('adoptModal').style.display = 'none'; }
-        function closeSuccessModal() {
-            document.getElementById('successModal').style.display = 'none';
-            const url = new URL(window.location);
-            url.searchParams.delete('success');
-            window.history.replaceState({}, document.title, url);
+    function openModal() { 
+        document.getElementById('adoptModal').style.display = 'block'; 
+    }
+    
+    function closeModal() { 
+        document.getElementById('adoptModal').style.display = 'none'; 
+    }
+    
+    function closeSuccessModal() {
+        // Stop and reset the video
+        const video = document.getElementById('successVideo');
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
         }
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') document.getElementById('successModal').style.display = 'block';
+        
+        document.getElementById('successModal').style.display = 'none';
+        
+        // Clean the URL parameters without refreshing the page
+        const url = new URL(window.location);
+        url.searchParams.delete('success');
+        window.history.replaceState({}, document.title, url);
+    }
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            // Show the success modal
+            document.getElementById('successModal').style.display = 'block';
+            
+            // Play the video
+            const video = document.getElementById('successVideo');
+            if (video) {
+                video.play().catch(function(error) {
+                    console.log("Autoplay prevented: user interaction required.");
+                });
+            }
         }
-    </script>
+    }
+</script>
 </body>
 </html>
