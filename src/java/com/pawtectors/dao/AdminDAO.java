@@ -312,7 +312,7 @@ public class AdminDAO {
         return list;
     }
 
-    // --- ADDED: INQUIRY/MESSAGE METHODS ---
+    // --- INQUIRY/MESSAGE METHODS ---
     public List<Message> getMessages() throws Exception {
         List<Message> list = new ArrayList<>();
 

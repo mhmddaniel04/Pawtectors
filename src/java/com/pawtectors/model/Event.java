@@ -23,7 +23,6 @@ public class Event {
         return new SimpleDateFormat("dd MMM yyyy").format(eventDate);
     }
 
-    // Fixes the Edit Event modal date picker
     public String getHtmlDate() {
         if (eventDate == null) return "";
         return new SimpleDateFormat("yyyy-MM-dd").format(eventDate);

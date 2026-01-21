@@ -114,7 +114,7 @@
         .pet-info { padding: 25px; flex-grow: 1; }
         .pet-info h3 { margin: 0; font-size: 22px; font-weight: 800; color: var(--color-primary); }
         
-        /* Fixed Dynamic Status Badges */
+        /* Dynamic Status Badges */
         .status-badge { display: inline-block; padding: 6px 14px; border-radius: 12px; font-weight: 800; font-size: 11px; text-transform: uppercase; margin-bottom: 12px; }
         .available { background: #dcfce7; color: #166534; }
         .adopted { background: #fee2e2; color: #991b1b; }

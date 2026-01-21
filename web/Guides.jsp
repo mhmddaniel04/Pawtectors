@@ -282,9 +282,7 @@
     <p>Your complete guide to understanding nutrition, grooming, training, and responsible pet ownership.</p>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
-
     <!-- SECTION 1 -->
     <div class="tips-section">
         <h2>Tips for First-Time Pet Owners</h2>

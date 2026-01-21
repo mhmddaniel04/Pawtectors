@@ -804,7 +804,5 @@
             rows.forEach(r => tableBody.appendChild(r));
         });
     </script>
-
-
 </body>
 </html>

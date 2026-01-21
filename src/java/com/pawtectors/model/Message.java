@@ -22,7 +22,6 @@ public class Message implements Serializable {
         this.message = message;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }

@@ -331,21 +331,15 @@
             const audio = document.getElementById('adoptClickSound');
 
             if (audio) {
-                audio.play().catch(function(error) {
-                    // If autoplay/play is blocked, just go to the URL
+                audio.play().catch(function(error) {                  
                     window.location.href = url;
                 });
-
-                // Wait for the sound to play for a short duration (e.g., 400ms) 
-                // before changing the page so the user hears the "click"
                 setTimeout(function() {
                     window.location.href = url;
                 }, 400); 
             } else {
-                // Fallback if audio element is missing
                 window.location.href = url;
             }
-
             return false;
         }
     </script>
